@@ -9,6 +9,19 @@ public class StringCalculator
 	// Unit method
 	public int add(String numbers)
 	{
-		return 0;
-	}
-}
+		int sum=0;
+		//input string is empty
+		if(numbers.isEmpty() || numbers==null )
+		{
+			return 0;
+		}
+		String delimiter=",";
+		String [] elements=numbers.split(delimiter);
+		for(String number:elements)
+		{
+			sum=sum+Integer.parseInt(number);
+		}
+		return sum;
+		}//add
+
+}//class

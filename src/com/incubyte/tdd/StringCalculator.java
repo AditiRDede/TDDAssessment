@@ -19,9 +19,21 @@ public class StringCalculator
 		String [] elements=numbers.split(delimiter);
 		for(String number:elements)
 		{
-			sum=sum+Integer.parseInt(number);
-		}
+			//allow newline between numbers
+			String shortlist[]=number.split("\n");
+			if(shortlist.length>0)
+			{
+				for(String no:shortlist)
+				{
+					sum=sum+Integer.parseInt(no);
+				}
+			}
+			else
+			{
+				sum=sum+Integer.parseInt(number);
+			}
+		}// primary for loop of input string
 		return sum;
-		}//add
+	}//add
 
 }//class

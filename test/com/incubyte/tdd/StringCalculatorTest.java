@@ -23,6 +23,11 @@ class StringCalculatorTest
 		assertEquals(scref.add("1,5"),6);
 		assertEquals(scref.add("1,5,1"),7);
 	}
+	@Test
+	void allowNewLine()
+	{
+		assertEquals(scref.add("1\n2,3"),6);
+	}
 	
 
 }

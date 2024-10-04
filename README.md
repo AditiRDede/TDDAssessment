@@ -16,7 +16,7 @@ Lets get started...
 
 5.Added support to handle multiple delimeters
 
-6.separated logic for negative number check and modified ans separated case of handling new line
+6.separated logic for negative number check and of handling new line between numbers
 
 7.Completed all tests.
 

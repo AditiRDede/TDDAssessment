@@ -1,5 +1,5 @@
 package com.incubyte.tdd;
-
+import java.util.*;
 public class StringCalculator
 {
 	public static void main(String [] args)
@@ -24,23 +24,60 @@ public class StringCalculator
 			 numbers=numbers.substring(4,numbers.length());
 		}
 	    String [] elements=numbers.split(delimiter);
-		for(String number:elements)
+	    ArrayList<Integer> numlist=getNumbersList(elements);
+	    //negative num check
+	    try
+	    {
+	    	ArrayList<Integer> negativeNumberList=negativenumCheck(numlist);
+	    	if(negativeNumberList.size()>0)
+	    	{
+	    		throw new IllegalArgumentException("negative numbers not allowed " + negativeNumberList);
+	    	}
+	    	System.out.println("parsed list of numbers : "+numlist);
+	    	//add elements : 
+	    	for(Integer number : numlist)
+	    	{
+	    		sum=sum+number;
+	    	}
+	     }
+	    catch(IllegalArgumentException e)
+	    {
+	    	System.out.println("Caught exception: " + e.getMessage());
+	    }
+	    return sum;
+	}//add
+	public static ArrayList<Integer> getNumbersList(String [] elementsarray)
+	{
+		ArrayList<Integer> anslist=new ArrayList<Integer>();
+		for(String elementstr:elementsarray)
 		{
-			//allow newline between numbers
-			String shortlist[]=number.split("\n");
+			String shortlist[]=elementstr.split("\n");
 			if(shortlist.length>0)
 			{
 				for(String no:shortlist)
 				{
-					sum=sum+Integer.parseInt(no);
+					anslist.add(Integer.parseInt(no));
 				}
 			}
 			else
 			{
-				sum=sum+Integer.parseInt(number);
+				anslist.add(Integer.parseInt(elementstr));
 			}
-		}// primary for loop of input string
-		return sum;
-	}//add
-
+		}
+		return anslist;
+	}//getNumbersList :parsed numbers
+	
+	public static ArrayList<Integer> negativenumCheck(ArrayList<Integer> list)
+	{
+		ArrayList<Integer> negativeNumberList=new ArrayList<Integer>();
+		for(Integer no : list)
+		{
+			if(no <0)
+			{
+				negativeNumberList.add(no);
+			}
+		}
+	    return negativeNumberList;
+	}//negativenumbercheck
+	
 }//class

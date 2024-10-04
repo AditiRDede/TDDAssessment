@@ -15,8 +15,15 @@ public class StringCalculator
 		{
 			return 0;
 		}
+		//default delimiter
 		String delimiter=",";
-		String [] elements=numbers.split(delimiter);
+		//support to multiple delimiter
+		if(numbers.startsWith("//"))
+		{
+			 delimiter=numbers.substring(2,3);
+			 numbers=numbers.substring(4,numbers.length());
+		}
+	    String [] elements=numbers.split(delimiter);
 		for(String number:elements)
 		{
 			//allow newline between numbers
